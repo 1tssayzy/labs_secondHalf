@@ -2,9 +2,7 @@
 
 const addSum = (a, b) => a + b;
 
-<<<<<<< HEAD
-function memoization(fn, options = { maxSize: null, delStrategy: null }) {
-=======
+
 function memoization(fn, options = { 
   maxSize: null, 
   delStrategy: null, 
@@ -13,9 +11,7 @@ function memoization(fn, options = {
   }
  ) {   
 
->>>>>>> 8cafe4c (made a TIME and CUSTOM strategy lab is done)
   const cache = new Map();
-
   return function (...args) {
     const key = JSON.stringify(args);
 
