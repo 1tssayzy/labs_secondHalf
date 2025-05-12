@@ -13,17 +13,11 @@ class BiDirectionalPriorityQueue {
   peek(type) {
     if (this.queue.length === 0) return null;
 
-    switch (type) {
-      case 'highest':
-        return this.queue.reduce((a, b) => (b.priority > a.priority ? b : a)).item;
-      case 'lowest':
-        return this.queue.reduce((a, b) => (b.priority < a.priority ? b : a)).item;
-      case 'oldest-fifo':
-        return this.queue.reduce((a, b) => (b.id < a.id ? b : a)).item;
-      case 'newest-lifo':
-        return this.queue.reduce((a, b) => (b.id > a.id ? b : a)).item;
-      default:
-        throw new Error("Invalid peek type. Use 'highest', 'lowest', 'oldest', or 'newest'.");
+    const selectors = {
+        highest: (a, b) => b.priority > a.priority,
+        lowest: (a, b) => b.priority < a.priority,
+        fifo: (a, b) => b.id < a.id,      
+        lifo: (a, b) => b.id > a.id 
     }
   }
 
